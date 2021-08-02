@@ -1,0 +1,13 @@
+<nav class="menu">
+  <LinkTo @route="index" class="menu-index">
+    <h1 data-test-nav-bar-index-link>SuperRentals</h1>
+  </LinkTo>
+  <div class="links">
+    <LinkTo data-test-nav-bar-about-link @route="about" class="menu-about">
+      About
+    </LinkTo>
+    <LinkTo data-test-nav-bar-contact-link @route="contact" class="menu-contact">
+      Contact
+    </LinkTo>
+  </div>
+</nav>
