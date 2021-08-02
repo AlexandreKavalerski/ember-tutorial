@@ -1,4 +1,4 @@
-import { module, test } from 'qunit';
+import { assert, module, test } from 'qunit';
 import { click, visit, currentURL } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 
@@ -15,5 +15,17 @@ module('Acceptance | super rentals', function (hooks) {
     await click('.jumbo a.button');
 
     assert.equal(currentURL(), '/about');
+  });
+
+  test('visiting /about', async (hooks) => {
+    await visit('/about');
+
+    assert.equal(currentURL(), '/about');
+    assert.dom('[data-test-title]').hasText('About Super Rentals');
+
+    assert.dom('[data-test-contact-link]').hasText('Contact Us');
+    await click('[data-test-contact-link]');
+
+    assert.equal(currentURL(), '/getting-in-touch');
   });
 });
