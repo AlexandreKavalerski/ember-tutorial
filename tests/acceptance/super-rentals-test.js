@@ -28,4 +28,16 @@ module('Acceptance | super rentals', function (hooks) {
 
     assert.equal(currentURL(), '/getting-in-touch');
   });
+
+  test('visiting /getting-in-touch', async (hooks) => {
+    await visit('/getting-in-touch');
+
+    assert.equal(currentURL(), '/getting-in-touch');
+    assert.dom('[data-test-title]').hasText('Contact Us');
+
+    assert.dom('[data-test-about-link]').hasText('About');
+    await click('[data-test-about-link]');
+
+    assert.equal(currentURL(), '/about');
+  });
 });
