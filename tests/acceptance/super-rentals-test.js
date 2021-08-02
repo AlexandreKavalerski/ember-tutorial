@@ -9,10 +9,10 @@ module('Acceptance | super rentals', function (hooks) {
     await visit('/');
 
     assert.equal(currentURL(), '/');
-    assert.dom('h2').hasText('Welcome to super Rentals!');
+    assert.dom('[data-test-title]').hasText('Welcome to super Rentals!');
 
-    assert.dom('.jumbo a.button').hasText('About Us');
-    await click('.jumbo a.button');
+    assert.dom('[data-test-about-link]').hasText('About Us');
+    await click('[data-test-about-link]');
 
     assert.equal(currentURL(), '/about');
   });
