@@ -17,5 +17,6 @@ module('Integration | Component | ak-rental', function (hooks) {
     assert.dom('article .detail.bedrooms').includesText('15');
 
     assert.dom('article .image').exists();
+    assert.dom('article .map').exists();
   });
 });
