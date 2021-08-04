@@ -18,7 +18,7 @@ module('Integration | Component | ak-rental/image', function (hooks) {
       .hasAttribute('alt', 'Teaching Tomster');
   });
 
-  test('clicking on the component toggles its size', async (assert) => {
+  test('clicking on the component toggles its size', async function (assert) {
     await render(hbs`
     <AkRental::Image
       src=""

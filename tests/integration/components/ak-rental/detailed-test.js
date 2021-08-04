@@ -28,7 +28,7 @@ module('Integration | Component | ak-rental/detailed', function (hooks) {
     });
   });
 
-  test('it renders a header with a share button', async (assert) => {
+  test('it renders a header with a share button', async function (assert) {
     await render(hbs`<AkRental::Detailed @rental={{this.rental}} />`);
 
     assert.dom('.jumbo').exists();
@@ -39,7 +39,7 @@ module('Integration | Component | ak-rental/detailed', function (hooks) {
     assert.dom('.jumbo a.button').containsText('Share on Twitter');
   });
 
-  test('it renders detailed information about a rental property', async (assert) => {
+  test('it renders detailed information about a rental property', async function (assert) {
     await render(hbs`<AkRental::Detailed @rental={{this.rental}} />`);
 
     assert.dom('article').hasClass('rental');
