@@ -9,6 +9,7 @@ module('Integration | Component | ak-rental', function (hooks) {
   test('it renders information about a rental property', async function (assert) {
     this.setProperties({
       rental: {
+        id: 'scooby-house',
         title: 'Scooby House',
         owner: 'Veruca Salt',
         city: 'San Francisco',
@@ -34,6 +35,9 @@ module('Integration | Component | ak-rental', function (hooks) {
     assert.dom('article .detail.type').includesText('Standalone');
     assert.dom('article .detail.location').includesText('San Francisco');
     assert.dom('article .detail.bedrooms').includesText('15');
+    assert
+      .dom('[data-test-rental-link]')
+      .hasAttribute('href', '/rentals/scooby-house');
 
     assert.dom('article .image').exists();
     assert.dom('article .map').exists();
