@@ -1,15 +1,7 @@
 <AkJumbo>
-    <h2 data-test-title>Welcome to super Rentals!</h2>
-    <p>We hope you find exactly what you're looking for in a place to stay.</p>
-    <LinkTo data-test-about-link @route="about" class="button">About Us</LinkTo>
+  <h2 data-test-title>Welcome to super Rentals!</h2>
+  <p>We hope you find exactly what you're looking for in a place to stay.</p>
+  <LinkTo data-test-about-link @route='about' class='button'>About Us</LinkTo>
 </AkJumbo>
 
-<div class="rentals">
-  <ul class="results">
-    {{#each @model as |rental|}}
-      <li><Ak-Rental @rental={{rental}} /></li>
-    {{else}}
-      Sorry, no rental here (yet)
-    {{/each}}
-  </ul>
-</div>
+<AkRentals @rentals={{@model}} />
