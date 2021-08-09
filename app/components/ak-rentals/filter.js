@@ -5,14 +5,19 @@ export default class AkRentalsFilterComponent extends Component {
     let { rentals, query } = this.args;
 
     if (query) {
-      console.log(rentals);
-      console.log(`Query = {${query}}`);
-      rentals = rentals.filter((rental) =>
-        rental.title.toLowerCase().includes(query.toLowerCase())
-      );
-      console.log(rentals);
+      rentals = rentals.filter((rental) => this.checkQuery(rental, query));
     }
 
     return rentals;
+  }
+
+  checkQuery(rental, query) {
+    query = query.toLowerCase();
+
+    return (
+      rental.title.toLowerCase().includes(query) ||
+      rental.city.toLowerCase().includes(query) ||
+      rental.category.toLowerCase().includes(query)
+    );
   }
 }

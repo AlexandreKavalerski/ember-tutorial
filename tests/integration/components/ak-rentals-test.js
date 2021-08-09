@@ -85,7 +85,7 @@ module('Integration | Component | ak-rentals', function (hooks) {
       .containsText('Downtown Charm');
   });
 
-  test('it updates the results according to the search query with ignoreCase', async function (assert) {
+  test('it updates the results according to the search by title query with ignoreCase', async function (assert) {
     await render(hbs`<AkRentals @rentals={{this.rentals}} />`);
 
     assert.dom('.rentals').exists();
@@ -102,5 +102,43 @@ module('Integration | Component | ak-rentals', function (hooks) {
     assert.dom('.rentals .results').exists();
     assert.dom('.rentals .results li').exists({ count: 1 });
     assert.dom('.rentals .results li').containsText('Grand Old Mansion');
+  });
+
+  test('it updates the results according to the search by city query with ignoreCase', async function (assert) {
+    await render(hbs`<AkRentals @rentals={{this.rentals}} />`);
+
+    assert.dom('.rentals').exists();
+    assert.dom('.rentals input').exists();
+
+    await fillIn('.rentals input', 'FraNcisco');
+
+    assert.dom('.rentals .results').exists();
+    assert.dom('.rentals .results li').exists({ count: 1 });
+    assert.dom('.rentals .results li').containsText('Grand Old Mansion');
+
+    await fillIn('.rentals input', 'attl');
+
+    assert.dom('.rentals .results').exists();
+    assert.dom('.rentals .results li').exists({ count: 1 });
+    assert.dom('.rentals .results li').containsText('Urban Living');
+  });
+
+  test('it updates the results according to the search by category query with ignoreCase', async function (assert) {
+    await render(hbs`<AkRentals @rentals={{this.rentals}} />`);
+
+    assert.dom('.rentals').exists();
+    assert.dom('.rentals input').exists();
+
+    await fillIn('.rentals input', 'apartment');
+
+    assert.dom('.rentals .results').exists();
+    assert.dom('.rentals .results li').exists({ count: 1 });
+    assert.dom('.rentals .results li').containsText('Downtown Charm');
+
+    await fillIn('.rentals input', 'cond');
+
+    assert.dom('.rentals .results').exists();
+    assert.dom('.rentals .results li').exists({ count: 1 });
+    assert.dom('.rentals .results li').containsText('Urban Living');
   });
 });
