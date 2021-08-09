@@ -1,14 +1,14 @@
 <div class='rentals'>
   <label>
     <span>Where would you like to stay?</span>
-    <input class='light' />
+    <Input @value={{this.query}} class='light' />
   </label>
 
   <ul class='results'>
-    {{#each @rentals as |rental|}}
-      <li><Ak-Rental @rental={{rental}} /></li>
-    {{else}}
-      Sorry, no rental here (yet)
-    {{/each}}
+    <AkRentals::Filter @rentals={{@rentals}} @query={{this.query}} as |results|>
+      {{#each results as |rental|}}
+        <li><AkRental @rental={{rental}} /></li>
+      {{/each}}
+    </AkRentals::Filter>
   </ul>
 </div>
